@@ -1,9 +1,10 @@
 <?php
 /**
  * Plugin Name: W4 Post List - Advanced Custom Fields
+ * Plugin URI: https://github.com/valenvb/w4pl-acf
  * Description: Provides access to ACF data in W4 Post List
  * Author: Valen Varangu-Booth
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -22,8 +23,6 @@ if( !function_exists("w4pl_acf_load_shortcode") ){
 
         return array_merge($codes, $acf_code);
     }
-    //register shortcode with W4PL
-    add_filter('w4pl/get_shortcodes', 'w4pl_acf_load_shortcode');
 }
 
 if( !function_exists('w4pl_acf_data_callback') ){
@@ -53,3 +52,6 @@ if( !function_exists('w4pl_acf_util_keyReduce') ){
         return array_key_exists($idx, $arr) ? $arr[$idx] : null;        
     }
 }
+
+//register shortcode with W4PL
+add_filter('w4pl/get_shortcodes', 'w4pl_acf_load_shortcode');

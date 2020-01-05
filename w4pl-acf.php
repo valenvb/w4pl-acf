@@ -15,7 +15,7 @@ if( !function_exists("w4pl_acf_load_shortcode") ){
             'acf' => array(
                 'group' => 'Post',
                 'callback' => 'w4pl_acf_data_callback',
-                'desc' => '<strong>'. __('Output', 'w4pl') .'</strong>: ACF field data'
+                'desc' => '<strong>'. __('Output', 'w4pl') .'</strong>: ACF field data. Usage: accepts field name as first attribute or with field=name. <br /> Nested fields can be accessed using dot (.) notation. eg: field=group.subfield'
             )
         );
 

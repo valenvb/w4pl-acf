@@ -13,15 +13,30 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Zip Release
-      uses: TheDoctor0/zip-release@v0.2.1
-      with:
-        # Filename for archive
-        # Base path for archive files
-        #path: # optional, default is .
-        # List of excluded files/directories
-        exclusions: '*.git* .gitignore docker-compose.yaml .github/*'
+      run: |
+        zip -r w4pl_acf.zip . -x *.git* .gitignore docker-compose.yaml .github/*
     - name: Upload Zip
       uses: actions/upload-artifact@v1.0.0
       with:
         name: release.zip
-        path: ./release.zip
+        path: ./w4pl_acf.zip
+    - name: Create Release
+      id: create_release
+      uses:  actions/create-release@v1.0.0
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: true
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload_release 
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./w4pl_acf.zip
+          asset_name: w4pl_acf.zip
+          asset_content_type: application/zip

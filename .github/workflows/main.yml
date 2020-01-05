@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  make_zip:
 
     runs-on: ubuntu-latest
 
@@ -20,3 +20,8 @@ jobs:
         #path: # optional, default is .
         # List of excluded files/directories
         exclusions: '*.git* .gitignore docker-compose.yaml .github/*'
+    - name: Upload Zip
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: release.zip
+        path: ./release.zip

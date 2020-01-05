@@ -29,7 +29,7 @@ if( !function_exists("w4pl_acf_load_shortcode") ){
 if( !function_exists('w4pl_acf_data_callback') ){
     function w4pl_acf_data_callback($attr, $cont){
         if( !is_string($attr[0]) && !isset($attr['field']) ){
-            error_log("w4pl_acf: no ACF key given");
+            error_log("w4pl_acf: no ACF field name given");
             return "";
         }
         if( is_string($attr[0]) ){

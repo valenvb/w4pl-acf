@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Zip Release
       run: |
-        zip -r w4pl_acf.zip . -x *.git* .* docker-compose.yaml tests/* bin/* phpunit.xml.dist wp
+        zip -r w4pl_acf.zip . -x *.git* .* docker-compose.yaml tests/* bin/* phpunit.xml.dist
     - name: Upload Zip
       uses: actions/upload-artifact@v1.0.0
       with:

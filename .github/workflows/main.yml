@@ -12,9 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: Zip Release
+      uses: TheDoctor0/zip-release@v0.2.1
+      with:
+        # Filename for archive
+        # Base path for archive files
+        #path: # optional, default is .
+        # List of excluded files/directories
+        exclusions: '*.git* .gitignore docker-compose.yaml .github/*'

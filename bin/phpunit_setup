@@ -1,0 +1,2 @@
+#!/bin/bash
+docker-compose run --rm phpunit /app/bin/install-wp-tests.sh wordpress_test root somewordpress db latest false
